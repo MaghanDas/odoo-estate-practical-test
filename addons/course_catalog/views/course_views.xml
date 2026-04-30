@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_course_form" model="ir.ui.view">
+        <field name="name">course.catalog.form</field>
+        <field name="model">course.catalog</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Course title..."/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="instructor_id"/>
+                            <field name="price"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="enrollment_count"/>
+                            <field name="total_revenue"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description" placeholder="What does this course cover?"/>
+                        </page>
+                        <page string="Enrollments">
+                            <field name="enrollment_ids">
+                                <tree editable="bottom">
+                                    <field name="student_id"/>
+                                    <field name="amount"/>
+                                    <field name="enrolled_on"/>
+                                    <field name="currency_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_course_tree" model="ir.ui.view">
+        <field name="name">course.catalog.tree</field>
+        <field name="model">course.catalog</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="instructor_id"/>
+                <field name="enrollment_count"/>
+                <field name="total_revenue"/>
+                <field name="currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_course_search" model="ir.ui.view">
+        <field name="name">course.catalog.search</field>
+        <field name="model">course.catalog</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="instructor_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_course_catalog" model="ir.actions.act_window">
+        <field name="name">Courses</field>
+        <field name="res_model">course.catalog</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_course_root" name="Courses" sequence="80"/>
+    <menuitem id="menu_course_catalog"
+              name="Course Catalog"
+              parent="menu_course_root"
+              action="action_course_catalog"
+              sequence="10"/>
+
+</odoo>
