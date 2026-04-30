@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top-level menu item (the app icon) -->
+    <menuitem id="estate_menu_root"
+        name="Real Estate"
+        sequence="10"/>
+
+    <!-- Advertisements submenu -->
+    <menuitem id="estate_menu_advertisements"
+        name="Advertisements"
+        parent="estate_menu_root"
+        sequence="10"/>
+
+    <!-- Properties under Advertisements -->
+    <menuitem id="estate_menu_properties"
+        name="Properties"
+        parent="estate_menu_advertisements"
+        action="estate_property_action"
+        sequence="10"/>
+
+    <!-- Settings submenu -->
+    <menuitem id="estate_menu_config"
+        name="Configuration"
+        parent="estate_menu_root"
+        sequence="20"/>
+
+    <!-- Property Types under Configuration -->
+    <menuitem id="estate_menu_property_types"
+        name="Property Types"
+        parent="estate_menu_config"
+        action="estate_property_type_action"
+        sequence="10"/>
+</odoo>
+
