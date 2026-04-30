@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="estate_property_view_form_inherit_account" model="ir.ui.view">
+        <field name="name">estate.property.form.inherit.account</field>
+        <field name="model">estate.property</field>
+        <!-- inherit_id points to the ORIGINAL form view in the estate module -->
+        <field name="inherit_id" ref="estate.estate_property_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Find the <sheet> tag in the original form and inject before it -->
+            <sheet position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button
+                        class="oe_stat_button"
+                        type="object"
+                        name="action_view_invoices"
+                        icon="fa-pencil-square-o"
+                        attrs="{'invisible': [('invoice_count', '=', 0)]}">
+                        <field
+                            name="invoice_count"
+                            widget="statinfo"
+                            string="Invoices"/>
+                    </button>
+                </div>
+            </sheet>
+
+        </field>
+    </record>
+</odoo>
