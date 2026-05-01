@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+config/
+odoo_data/
+db_data/
+*.zip
+src/
+.local/
