@@ -66,7 +66,7 @@ class EstateProperty(models.Model):
         self.ensure_one()
 
         # Use the current user's active company
-        company = self.env.company
+        company = self.company_id or self.env.company
 
         # Find the sales journal for this company
         journal = self.env['account.journal'].search([

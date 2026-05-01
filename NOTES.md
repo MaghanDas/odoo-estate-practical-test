@@ -113,6 +113,11 @@ an explicit error makes the duplicate call visible and traceable.
 Attempting to sell without `buyer_id` raises a `UserError` before
 `super().action_sold()` is called, so state never changes to `sold`.
 
+- **Multi-company**: `company_id` field added to `estate.property` 
+  (defaults to current user's company). Invoice creation uses 
+  `self.company_id` to find the correct journal and account, 
+  making it fully multi-company safe.
+  
 ### Acceptance criteria result
 
 ```

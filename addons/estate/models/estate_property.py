@@ -35,7 +35,11 @@ class EstateProperty(models.Model):
         ]
     )
     active = fields.Boolean(default=True)  # False = archived/hidden
-
+    company_id = fields.Many2one(
+    'res.company',
+    string='Company',
+    default=lambda self: self.env.company,
+)
     # State drives the status bar at the top of the form
     state = fields.Selection(
         selection=[
